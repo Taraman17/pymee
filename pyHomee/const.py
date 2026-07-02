@@ -576,6 +576,7 @@ class AttributeState(IntEnum):
     INACTIVE = 5
     IGNORED = 6
     UNAVAILABLE = 7
+    BLOCKED = 8
     STATE_UNLISTED = 9
 
 
