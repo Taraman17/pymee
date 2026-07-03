@@ -33,6 +33,7 @@ TEXT_ATTRIBUTES = [
     AttributeType.IP_ADDRESS,
     AttributeType.HOST_NAME,
     AttributeType.SOFTWARE_VERSION,
+    AttributeType.MESH_PARTNERS,
 ]
 
 
