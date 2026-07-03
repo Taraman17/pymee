@@ -25,6 +25,16 @@ from .const import (
 
 _LOGGER = logging.getLogger(__name__)
 
+TEXT_ATTRIBUTES = [
+    AttributeType.HARDWARE_REVISION,
+    AttributeType.FIRMWARE_REVISION,
+    AttributeType.SOFTWARE_REVISION,
+    AttributeType.SERIAL_NUMBER,
+    AttributeType.IP_ADDRESS,
+    AttributeType.HOST_NAME,
+    AttributeType.SOFTWARE_VERSION,
+]
+
 
 def log_unknown_value(enum_type: Type[IntEnum], value: int) -> None:
     """Log a warning if a value does not exist in an enum."""
@@ -269,7 +279,9 @@ class HomeeAttribute(HomeeObject):
 
     def get_value(self) -> float | str:
         """Get the current value or data of the attribute."""
-        # If the unit of the attribute is 'text', it is stored in .data
+        # Return data for attributes that are known to be text-based, or if the unit is "text".
+        if self.type in TEXT_ATTRIBUTES:
+            return self.data
         if self.unit == "text":
             return self.data
 
