@@ -603,20 +603,20 @@ class Homee:
             "Set value: Device: %s Attribute: %s To: %s", device_id, attribute_id, value
         )
         await self.send(
-            f"PUT:/nodes/{device_id}/attributes/{attribute_id}?target_value={value}"
+            f"PUT:nodes/{device_id}/attributes/{attribute_id}?target_value={value}"
         )
 
     async def update_node(self, node_id: int) -> None:
         """Request current data for a node."""
         _LOGGER.debug("Request current data for node %s", node_id)
-        await self.send(f"GET:/nodes/{node_id}/")
+        await self.send(f"GET:nodes/{node_id}/")
 
     async def update_attribute(self, node_id: int, attribute_id: int) -> None:
         """Request current data for an attribute."""
         _LOGGER.debug(
             "Request current data for attribute %s of device %s", attribute_id, node_id
         )
-        await self.send(f"GET:/nodes/{node_id}/attributes/{attribute_id}")
+        await self.send(f"GET:nodes/{node_id}/attributes/{attribute_id}")
 
     async def play_homeegram(self, homeegram_id: int) -> None:
         """Invoke a homeegram."""
@@ -687,7 +687,7 @@ class Homee:
         """Execute when a warning message is received."""
         if self.warning.code == WarningCode.CUBE_LEARN_MODE_SUCCESSFUL:
             # we need to get all nodes again, since there is no way to get the newest only.
-            await self.send("GET:/nodes/")
+            await self.send("GET:nodes/")
 
     async def on_attribute_updated(self, attribute_data: dict, node: HomeeNode) -> None:
         """Execute when an 'attribute' message was received and an attribute was updated.
