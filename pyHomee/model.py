@@ -1,12 +1,12 @@
 """Data model for Homees various data items."""
 
-from enum import IntEnum
-
-from collections.abc import Callable
-from typing import Any, Self, Type
 import logging
 import re
+from collections.abc import Callable
+from enum import IntEnum
+from typing import Any, Self
 from urllib.parse import unquote
+
 from .const import (
     AttributeBasedOn,
     AttributeChangedBy,
@@ -37,7 +37,7 @@ TEXT_ATTRIBUTES = [
 ]
 
 
-def log_unknown_value(enum_type: Type[IntEnum], value: int) -> None:
+def log_unknown_value(enum_type: type[IntEnum], value: int) -> None:
     """Log a warning if a value does not exist in an enum."""
     _LOGGER.warning(
         (
