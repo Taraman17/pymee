@@ -529,37 +529,37 @@ class HomeeSettings(HomeeObject):
     @property
     def address(self) -> str:
         """Street set by user."""
-        return unquote(self._data["address"])
+        return unquote(self._data.get("address", ""))
 
     @property
     def city(self) -> str:
         """City set by user."""
-        return unquote(self._data["city"])
+        return unquote(self._data.get("city", ""))
 
     @property
     def zip(self) -> str:
         """Zip code set by user."""
-        return unquote(self._data["zip"])
+        return unquote(self._data.get("zip", ""))
 
     @property
     def state(self) -> str:
         """State set by user."""
-        return unquote(self._data["state"])
+        return unquote(self._data.get("state", ""))
 
     @property
     def latitude(self) -> float:
         """Latitude of set position of Homee."""
-        return float(self._data["latitude"])
+        return float(self._data.get("latitude", 0))
 
     @property
     def longitude(self) -> float:
         """Longitude of set position of Homee."""
-        return float(self._data["longitude"])
+        return float(self._data.get("longitude", 0))
 
     @property
     def country(self) -> str:
         """Country set by user."""
-        return unquote(self._data["country"])
+        return unquote(self._data.get("country", ""))
 
     @property
     def language(self) -> str:
@@ -603,7 +603,7 @@ class HomeeSettings(HomeeObject):
     @property
     def homee_name(self) -> str:
         """Decoded name of Homee."""
-        return unquote(self._data["homee_name"])
+        return unquote(self._data.get("homee_name", "homee"))
 
     @property
     def LastMissingCubeNotification(self) -> str:
@@ -619,7 +619,7 @@ class HomeeSettings(HomeeObject):
 
     @property
     def wlan_ssid(self) -> str:
-        return str(self._data["wlan_ssid"])
+        return str(self._data.get("wlan_ssid", ""))
 
     @property
     def wlan_mode(self) -> int:
@@ -640,11 +640,11 @@ class HomeeSettings(HomeeObject):
 
     @property
     def lan_ip_address(self) -> str:
-        return unquote(self._data["lan_ip_address"])
+        return unquote(self._data.get("lan_ip_address", ""))
 
     @property
     def available_ssids(self) -> list[str]:
-        return list(self._data["available_ssids"])
+        return list(self._data.get("available_ssids", []))
 
     @property
     def time(self) -> int:
